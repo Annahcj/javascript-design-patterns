@@ -21,9 +21,9 @@ function DecoratedUser(user, city) {
   }
 }
 
-let user = new User('Snoopy');
-user.say(); // Name: Snoopy
+let user = new User('Bob');
+user.say(); // Name: Bob
 
 let decoratedUser = new DecoratedUser(user, 'Tokyo');
-decoratedUser.say(); // Snoopy lives in Tokyo
+decoratedUser.say(); // Bob lives in Tokyo
 ```
