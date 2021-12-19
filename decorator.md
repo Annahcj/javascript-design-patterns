@@ -1,4 +1,4 @@
-# Decorator 
+# Decorator Design Pattern
 
 The decorator extends functionality of an object without changing the original object.  
 It acts as a wrapper for the object.  
