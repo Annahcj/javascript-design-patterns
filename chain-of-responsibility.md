@@ -4,8 +4,8 @@ The chain of responsibility design patterns 'chains' objects into a linear seque
 Each object decides whether to deal with or pass it on to the next handler.  
 
 Imagine we are implementing a program for validating a bank withdraw request.  
-At first, we are only told to check the accountId and password, but newer, more concrete validation checks are now needed!  
-Our code could get quite messy and hard to manage, and this is where the chain of responsibility design pattern helps simplify it.    
+At first, we are only told to check the validity of the accountId and password, but over time, we are required to add more concrete validation.    
+Our code could get quite messy and hard to manage, and this is where the chain of responsibility design pattern helps to simplify our code.    
 
 Dynamically set the next handlers for each object with a method setNext.  
 If any of the handlers has an error, it will not call the next handler.  
