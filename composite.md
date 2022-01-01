@@ -2,8 +2,8 @@
 
 A composite treats a composite object and an individual object in the same way.  
 Composes objects into tree structures with  
-  Individual objects as leafs (no children)  
-  Composite objects as composites (objects which can have children)  
+* Individual objects as leaves (no children)  
+* Composite objects as composites (objects which can have children)  
 
 In the code below, both the Employee and the EmployeeComposite class can show the employee details in the same way.   
 It makes no difference whether it is an Employee or an EmployeeComposite. It is treated in the same way.  
