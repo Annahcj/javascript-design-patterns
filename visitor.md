@@ -6,7 +6,7 @@ It is useful when:
 * Operations are not related to the object and you don't want to pollute the classes.  
 * You don't want to change the existing structure but need to perform operations.
 
-In the example below, the Car accepts the visitor and give it permission to 'visit' it. 
+In the example below, the Car accepts the visitor and gives it permission to 'visit' it. 
 The CarPainterVisitor visits the car and paints the car.  
 
 ```
