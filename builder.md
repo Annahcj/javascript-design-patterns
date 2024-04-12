@@ -1,39 +1,138 @@
 # Builder Design Pattern
 
-Create methods to change or add properties to an object.  
+Separates the construction of complex objects from the orchestration so that the same construction process can create different representations.
 
-Without builder:  
+The structure of the builder pattern consists of two parts: The director and the builder.
+The builder is an interface defining common methods to be implemented when extended.
+The director is responsible for creating the final object, using methods defined by a builder class.
+
+Why you would use it:
+- Ensures that the director doesn't need to change when we create a new type of builder, since the new builder implements the same interface.
+- Separates the construction of the builder object with how they are assembled at the end.
+- Promotes the open-closed principle (open for extension, closed for modification)
+
+
+Example:
 ```
-class User {
-  constructor(name, age, address) {
-    this.name = name;
-    this.age = age;
-    this.address = address;
-  }
+// Builder interface
+interface PizzaBuilder {
+  name: string;
+  base: string;
+  toppings: string[];
+  setName: () => this;
+  setBase: () => this;
+  setToppings: () => this;
 }
-let user = new User('Snoopy');
-// age and address are undefined
-user.age = 10;
-user.address = '0 Unknown Street';
-```
 
-With builder:  
-The code is tidier and we don't have to directly modify properties.  
-The properties will also never be undefined.  
+class HawaiianPizzaBuilder implements PizzaBuilder {
+  name: string;
+  base: string;
+  toppings: string[];
 
-```
-class User {
-  constructor(name) {
-    this.name = name;
+  public setName() {
+    this.name = 'Hawaiian';
+    return this;
   }
-  setAge(age) {
-    this.age = age;
-    return this; // by returning this we can chain methods
+
+  public setBase() {
+    this.base = 'Dough';
+    return this;
   }
-  setAddress(address) {
-    this.address = address;
+
+  public setToppings() {
+    this.toppings = ['Pineapple', 'Ham', 'Cheese'];
     return this;
   }
 }
-let user = new User('Snoopy').setAge(10).setAddress('0 Unknown Street');
+
+class PepperoniPizzaBuilder implements PizzaBuilder {
+  name: string;
+  base: string;
+  toppings: string[];
+
+  public setName() {
+    this.name = 'Pepperoni';
+    return this;
+  }
+
+  public setBase() {
+    this.base = 'Dough';
+    return this;
+  }
+
+  public setToppings() {
+    this.toppings = ['Pepperoni', 'Cheese'];
+    return this;
+  }
+}
+
+// Director
+class PizzaMaker {
+  pizzaBuilder: PizzaBuilder;
+
+  constructor(pizzaBuilder: PizzaBuilder) {
+    this.pizzaBuilder = pizzaBuilder;
+  }
+  makePizza() {
+    return this.pizzaBuilder.setName().setBase().setToppings();
+  }
+}
+
+const myPizza = new PizzaMaker(new HawaiianPizzaBuilder()).makePizza();
+```
+
+Example without director:
+```
+interface PizzaBuilder {
+  name: string;
+  base: string;
+  toppings: string[];
+  setName: () => this;
+  setBase: () => this;
+  setToppings: () => this;
+}
+
+class HawaiianPizzaBuilder implements PizzaBuilder {
+  name: string;
+  base: string;
+  toppings: string[];
+
+  public setName() {
+    this.name = 'Hawaiian';
+    return this;
+  }
+
+  public setBase() {
+    this.base = 'Dough';
+    return this;
+  }
+
+  public setToppings() {
+    this.toppings = ['Pineapple', 'Ham', 'Cheese'];
+    return this;
+  }
+}
+
+class PepperoniPizzaBuilder implements PizzaBuilder {
+  name: string;
+  base: string;
+  toppings: string[];
+
+  public setName() {
+    this.name = 'Pepperoni';
+    return this;
+  }
+
+  public setBase() {
+    this.base = 'Dough';
+    return this;
+  }
+
+  public setToppings() {
+    this.toppings = ['Pepperoni', 'Cheese'];
+    return this;
+  }
+}
+
+const myPizza = new HawaiianPizzaBuilder().setName().setBase().setToppings();
 ```
