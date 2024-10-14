@@ -1,18 +1,20 @@
 # Builder Design Pattern
 
-Separates the construction of complex objects from the orchestration so that the same construction process can create different representations
+Separates complex object construction into steps and gives flexibility to only call the methods necessary for the given use-case.
+It also enables the construction of different representations of objects using the same construction process.
 
-The structure of the builder pattern consists of two parts: The director and the builder.
-The builder is an interface defining the "building blocks".
+The structure of the builder pattern consists of two parts: The builder and the director.
+The builder is the one that defines the object, and contain the different steps.
 The director is responsible for orchestrating the creation of the final object, using methods defined by a builder class. It constructs the final object step-by-step.
 
-What is promotes:
+What it promotes:
 - Separates the building blocks (builder) with the building process (director).
-- Step-by-step construction of complex objects.
+- Step-by-step construction of complex objects, hence solving the problem of having unnecessary steps.
 - Encapsulation and modularization.
 
 Use-cases:
 - You need to create different representations of the same type of object.
+- You have unnecessary steps that don't get used most of the time.
 
 Example:
 ```
