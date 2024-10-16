@@ -1,8 +1,9 @@
 # Adapter Design Pattern
 
 The adapter design pattern lets incompatible interfaces work together.    
-It works like a real world adapter, adapting to the new interface so that it can work with the existing interface.   
-It is also useful because we don't have to modify the existing source code and potentially cause bugs.  
+This is often used when we need to avoid modifying the existing code.
+It works like a real world adapter, converting the input to the expected format of the new interface.
+In the client's perspective, nothing should change. The adapter abstracts all the conversion. 
 
 In the example below, the payPal accepts payment in dollars, 
 and the new payment method, googlePay, accepts payment in cents.  
