@@ -3,6 +3,12 @@
 The decorator extends functionality of an object without changing the original object.  
 It acts as a wrapper for the object.  
 
+The main benefit is that it enables the client to dynamically extend and use any combination of functionality.
+There can be multiple decorators, and each decorator follows the same interface as the original object.
+The client can wrap the main object in multiple decorators and obtain all functionalities.
+
+Without this design pattern, sub-classes would need to be made to account for every combination of classes.
+
 ``` 
 function User(name) {
   this.name = name;
